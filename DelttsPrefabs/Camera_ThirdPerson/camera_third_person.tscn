@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyadd4a78rwn7"]
+
+[ext_resource type="Script" path="res://DelttsPrefabs/Camera_ThirdPerson/camera_third_person.gd" id="1_e5blv"]
+
+[node name="Camera_ThirdPerson" type="Node3D" node_paths=PackedStringArray("pivot_y", "pivot_x", "camera_arm", "camera")]
+script = ExtResource("1_e5blv")
+pivot_y = NodePath("PivotY")
+pivot_x = NodePath("PivotY/PivotX")
+camera_arm = NodePath("PivotY/PivotX/SpringArm3D")
+camera = NodePath("PivotY/PivotX/SpringArm3D/Camera3D")
+mouse_sensitivity = 1.0
+max_look_up_angle = 20.0
+max_look_down_angle = 60.0
+
+[node name="PivotY" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="PivotX" type="Node3D" parent="PivotY"]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="PivotY/PivotX"]
+spring_length = 4.0
+margin = 0.02
+
+[node name="Camera3D" type="Camera3D" parent="PivotY/PivotX/SpringArm3D"]
